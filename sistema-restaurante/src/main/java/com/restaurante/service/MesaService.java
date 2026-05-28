@@ -59,4 +59,13 @@ public class MesaService {
         mesa.setEstado("Inactiva");
         mesaRepository.save(mesa);
     }
+
+    public List<MesaResponseDTO> listarMesasDisponibles() {
+        return mesaRepository.findByEstado("Libre")
+                .stream()
+                .map(MesaMapper::toDTO)
+                .toList();
+    }
+
+
 }

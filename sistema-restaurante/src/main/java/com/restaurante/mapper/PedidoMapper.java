@@ -32,6 +32,20 @@ public class PedidoMapper {
                 .numeroMesa(pedido.getMesa().getNumero())
                 .idUsuario(pedido.getUsuario().getIdUsuario())
                 .nombreUsuario(pedido.getUsuario().getNombre())
+                .idCliente(
+                        pedido.getCliente() != null
+                                ? pedido.getCliente().getIdCliente()
+                                : null
+                )
+
+                .nombreCliente(
+                        pedido.getCliente() != null
+                                ? pedido.getCliente().getNombre() + " " +
+                                (pedido.getCliente().getApellido() != null
+                                        ? pedido.getCliente().getApellido()
+                                        : "")
+                                : "Cliente no registrado"
+                )
                 .detalles(detalles.stream()
                         .map(PedidoMapper::detalleToDTO)
                         .toList())

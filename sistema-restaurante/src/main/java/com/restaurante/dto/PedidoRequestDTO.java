@@ -20,9 +20,12 @@ public class PedidoRequestDTO {
     @NotNull(message = "El usuario es obligatorio")
     private Integer idUsuario;
 
+    private Integer idCliente;
+
     private String observacion;
 
     @NotEmpty(message = "El pedido debe tener al menos un producto")
     @Valid
     private List<DetallePedidoRequestDTO> detalles;
+
 }

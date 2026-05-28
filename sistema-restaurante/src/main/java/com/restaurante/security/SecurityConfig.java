@@ -39,6 +39,16 @@ public class SecurityConfig {
                         .requestMatchers("/api/pedidos/**").hasAnyRole("ADMINISTRADOR", "MESERO", "COCINERO", "SUPERVISOR")
                         .requestMatchers("/api/ventas/**").hasAnyRole("ADMINISTRADOR", "CAJERO", "SUPERVISOR")
                         .requestMatchers("/api/dashboard/**").hasAnyRole("ADMINISTRADOR", "SUPERVISOR")
+                        .requestMatchers("/api/clientes/**").hasAnyRole("ADMINISTRADOR", "MESERO", "SUPERVISOR")
+                        .requestMatchers("/api/reservas/**").hasAnyRole("ADMINISTRADOR", "MESERO", "SUPERVISOR")
+                        .requestMatchers("/api/fidelizacion/**").hasAnyRole("ADMINISTRADOR", "MESERO", "SUPERVISOR")
+                        .requestMatchers("/api/promociones/**").hasAnyRole("ADMINISTRADOR", "SUPERVISOR")
+                        .requestMatchers("/api/notificaciones/**").hasAnyRole("ADMINISTRADOR", "MESERO", "SUPERVISOR")
+                        .requestMatchers("/api/dashboard/crm/**").hasAnyRole("ADMINISTRADOR", "SUPERVISOR")
+                        .requestMatchers("/api/public/**").permitAll()
+                        .requestMatchers("/ws-notificaciones/**").permitAll()
+
+
 
                         .requestMatchers(
                                 "/swagger-ui/**",

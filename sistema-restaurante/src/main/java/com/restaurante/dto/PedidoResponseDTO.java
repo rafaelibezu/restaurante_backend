@@ -27,5 +27,9 @@ public class PedidoResponseDTO {
     private Integer idUsuario;
     private String nombreUsuario;
 
+    private Integer idCliente;
+    private String nombreCliente;
+
     private List<DetallePedidoResponseDTO> detalles;
+
 }

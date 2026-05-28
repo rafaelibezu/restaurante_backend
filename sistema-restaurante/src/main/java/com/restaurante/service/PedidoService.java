@@ -24,6 +24,7 @@ public class PedidoService {
     private final MesaRepository mesaRepository;
     private final UsuarioRepository usuarioRepository;
     private final ProductoRepository productoRepository;
+    private final ClienteRepository clienteRepository;
 
     public List<PedidoResponseDTO> listarPedidos() {
         return pedidoRepository.findAll()
@@ -61,6 +62,13 @@ public class PedidoService {
         Usuario usuario = usuarioRepository.findById(dto.getIdUsuario())
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
 
+        Cliente cliente = null;
+
+        if (dto.getIdCliente() != null) {
+            cliente = clienteRepository.findById(dto.getIdCliente())
+                    .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
+        }
+
         Pedido pedido = Pedido.builder()
                 .fecha(LocalDate.now())
                 .hora(LocalTime.now())
@@ -69,6 +77,7 @@ public class PedidoService {
                 .total(BigDecimal.ZERO)
                 .mesa(mesa)
                 .usuario(usuario)
+                .cliente(cliente)
                 .build();
 
         Pedido pedidoGuardado = pedidoRepository.save(pedido);

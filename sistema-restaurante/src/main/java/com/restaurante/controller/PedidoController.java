@@ -2,6 +2,7 @@ package com.restaurante.controller;
 
 import com.restaurante.dto.PedidoRequestDTO;
 import com.restaurante.dto.PedidoResponseDTO;
+import com.restaurante.repository.ClienteRepository;
 import com.restaurante.service.PedidoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.List;
 public class PedidoController {
 
     private final PedidoService pedidoService;
+    private final ClienteRepository clienteRepository;
 
     @GetMapping
     public List<PedidoResponseDTO> listarPedidos() {
